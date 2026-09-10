@@ -5,7 +5,7 @@ import HeroTitle from "../components/HeroTitle";
 import RankCard from "../components/RankCard";
 import TeamSearch from "../components/TeamSearch";
 import Leaderboard from "../components/Leaderboard";
-import Pagination from "../components/Pagination";
+// import Pagination from "../components/Pagination";
 import QuoteCard from "../components/QuoteCard";
 import KeepPlaying from "../components/KeepPlaying";
 import FloatingEnvironment from "../components/FloatingEnvironment";
@@ -53,7 +53,7 @@ export function LeaderboardPage() {
           <Leaderboard players={players} />
         </div>
 
-        <Pagination page={safePage} totalPages={totalPages} setPage={setPage} />
+        {/* <Pagination page={safePage} totalPages={totalPages} setPage={setPage} /> */}
 
         {/* <QuoteCard /> */}
         {/* <KeepPlaying /> */}

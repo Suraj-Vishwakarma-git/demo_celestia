@@ -15,7 +15,7 @@ export default function RunningCharacter({ side }) {
 
         return currentFrame + 1;
       });
-    }, 140); // CHANGE SPEED HERE
+    }, 100); // CHANGE SPEED HERE
 
     return () => {
       clearInterval(interval);
@@ -29,7 +29,7 @@ export default function RunningCharacter({ side }) {
       className={`running-character ${side}`}
       style={{
         backgroundImage: `url(${spriteImage})`,
-        backgroundPosition: `-${frame * 160}px 0px`,
+        backgroundPosition: `-${frame * 157}px 0px`,
       }}
     />
   );

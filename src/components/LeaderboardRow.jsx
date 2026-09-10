@@ -22,12 +22,6 @@ export default function LeaderboardRow({ player }) {
 
       <div><span className="level-pill">Lv. {player.level}</span></div>
       <div className="score">{player.score.toLocaleString()}</div>
-
-      <div className="badges">
-        {badgeIcons.slice(0, player.badges).map((Badge, i) => (
-          <span className={`badge b-${i}`} key={i}><Badge size={17} fill={i === 0 ? "currentColor" : "none"} /></span>
-        ))}
-      </div>
     </div>
   );
 }
