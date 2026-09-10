@@ -92,22 +92,26 @@ button { cursor: pointer; }
    CELESTIA PIXEL BRAND
    ========================================================= */
 
-.brand-play {
+.brand-play,
+.brand-verse {
   font-family: "Press Start 2P", monospace;
-
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 400;
-
   letter-spacing: 1px;
+}
 
+.brand-play {
   color: #ffffff;
-
-  /* Pixel-style depth */
   text-shadow:
     2px 2px 0 #163d68,
     4px 4px 0 rgba(0, 0, 0, 0.35);
+}
 
-  image-rendering: pixelated;
+.brand-verse {
+  color: #ffd83d;
+  text-shadow:
+    2px 2px 0 #8a5a00,
+    4px 4px 0 rgba(0, 0, 0, 0.35);
 }
 .nav-links {
   flex: 1;
