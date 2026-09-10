@@ -1,16 +1,82 @@
-import { Crown, Heart } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const letters = [
+  { char: "L", type: "leader" },
+  { char: "E", type: "leader" },
+  { char: "A", type: "leader" },
+  { char: "D", type: "leader" },
+  { char: "E", type: "leader" },
+  { char: "R", type: "leader" },
+
+  { char: "B", type: "board" },
+  { char: "O", type: "board" },
+  { char: "A", type: "board" },
+  { char: "R", type: "board" },
+  { char: "D", type: "board" },
+];
 
 export default function HeroTitle() {
+  const [visibleLetters, setVisibleLetters] = useState(0);
+  const [animationFinished, setAnimationFinished] = useState(false);
+
+  useEffect(() => {
+    setVisibleLetters(0);
+    setAnimationFinished(false);
+
+    const interval = setInterval(() => {
+      setVisibleLetters((current) => {
+        if (current >= letters.length) {
+          clearInterval(interval);
+          setAnimationFinished(true);
+          return current;
+        }
+
+        return current + 1;
+      });
+    }, 130);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
-    <section className="hero-title">
-      <div className="hero-crown"><Crown size={55} fill="currentColor" /></div>
-      <h1><span>LEADER</span><b>BOARD</b></h1>
-      <div className="hero-motto">
-        <span>PLAY</span><Heart size={15} fill="currentColor" />
-        <span>COMPETE</span><Heart size={15} fill="currentColor" />
-        <span>ACHIEVE</span><Heart size={15} fill="currentColor" />
-        <span>BELONG</span>
+    <div className="hero-title">
+      <div className="leaderboard-title">
+
+        <div className="title-letters">
+          {letters.map((item, index) => (
+            <span
+              key={index}
+              className={`title-letter ${item.type} ${
+                index < visibleLetters ? "visible" : ""
+              }`}
+            >
+              {item.char}
+            </span>
+          ))}
+        </div>
+
+        <span
+          className={`title-crown ${
+            animationFinished ? "visible" : ""
+          }`}
+        >
+          ♛
+        </span>
+
+        {!animationFinished && (
+          <span
+            className="pixel-cursor"
+            style={{
+              left: `${visibleLetters * 8.8}%`,
+            }}
+          >
+            ◆
+          </span>
+        )}
+
       </div>
-    </section>
+    </div>
   );
 }
