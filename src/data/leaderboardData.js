@@ -31,12 +31,21 @@ const names = [
   ["GoldenGoblin", 17, 52110, "PixelGuild"]
 ];
 
-export const leaderboardData = names.map(([name, level, score, team], index) => ({
-  rank: index + 1,
-  name,
-  level,
-  score,
-  team,
-  avatar: `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(name)}`,
-  badges: (index % 3) + 2
-}));
+const teamSizes = names.reduce((acc, [, , , team]) => {
+  acc[team] = (acc[team] || 0) + 1;
+  return acc;
+}, {});
+
+export const leaderboardData = names.map(
+  ([name, level, score, team], index) => ({
+    rank: index + 1,
+    name,
+    score,
+    team,
+    teamSize: teamSizes[team],
+
+    avatar: `https://api.dicebear.com/9.x/pixel-art/svg?seed=${encodeURIComponent(name)}`,
+
+    badges: (index % 3) + 2
+  })
+);

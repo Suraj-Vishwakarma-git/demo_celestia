@@ -4,8 +4,11 @@ export default function Leaderboard({ players }) {
   return (
     <section className="leaderboard-shell">
       <div className="table-head">
-        <div>#</div><div>PLAYER</div><div>LEVEL</div><div>SCORE</div>
-      </div>
+  <div>#</div>
+  <div>PLAYER</div>
+  <div>TEAM SIZE</div>
+  <div>SCORE</div>
+</div>
       <div className="table-body">
         {players.length ? players.map((player) => (
           <LeaderboardRow key={player.rank} player={player} />
