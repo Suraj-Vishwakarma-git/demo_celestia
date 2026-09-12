@@ -5,7 +5,7 @@ import TeamSearch from "../components/TeamSearch";
 import Leaderboard from "../components/Leaderboard";
 import FloatingEnvironment from "../components/FloatingEnvironment";
 import { leaderboardData } from "../data/leaderboardData";
-import RunningCharacter from "../components/RunningCharacter";
+// import RunningCharacter from "../components/RunningCharacter";
 
 export function LeaderboardPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,8 +30,8 @@ export function LeaderboardPage() {
       <Navbar open={menuOpen} setOpen={setMenuOpen} />
 
       <main className="content">
-        <RunningCharacter side="left" />
-        <RunningCharacter side="right" />
+        {/* <RunningCharacter side="left" /> */}
+        {/* <RunningCharacter side="right" /> */}
 
         <HeroTitle />
 
@@ -41,8 +41,8 @@ export function LeaderboardPage() {
         />
 
         <div className="leaderboard-frame">
-          <div className="stone-corner top-left" />
-          <div className="stone-corner top-right" />
+          {/* <div className="stone-corner top-left" />
+          <div className="stone-corner top-right" /> */}
 
           <Leaderboard players={filtered} />
         </div>

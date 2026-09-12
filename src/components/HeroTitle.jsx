@@ -33,7 +33,7 @@ export default function HeroTitle() {
 
         return current + 1;
       });
-    }, 130);
+    }, 200);
 
     return () => {
       clearInterval(interval);
@@ -67,13 +67,11 @@ export default function HeroTitle() {
 
         {!animationFinished && (
           <span
-            className="pixel-cursor"
+            className="pacman"
             style={{
               left: `${visibleLetters * 8.8}%`,
             }}
-          >
-            ◆
-          </span>
+          />
         )}
 
       </div>

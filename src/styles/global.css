@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Press+Start+2P&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap');
 
 /* =========================================================
    1. RESET
@@ -204,6 +205,7 @@ button { cursor: pointer; }
   border-radius: 8px;
   background: #0b326c;
   color: #bcd7f8;
+  font-family: "Press Start 2P", "Nunito", sans-serif;
 }
 
 .player-search input {
@@ -213,7 +215,7 @@ button { cursor: pointer; }
   outline: 0;
   background: transparent;
   color: #fff;
-  font-size: 13px;
+  font-size: 8px;
 }
 
 .player-search input::placeholder { color: #c6dcfa; }
@@ -468,7 +470,7 @@ button { cursor: pointer; }
   70% { transform: translateX(0) translateY(1px) scale(.97) rotate(0deg); }
 }
 
-.pixel-cursor {
+.pacman {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
@@ -479,11 +481,172 @@ button { cursor: pointer; }
   pointer-events: none;
   transition: left .13s linear;
   animation: pixelCursorBounce .25s infinite alternate;
+
+  position: absolute;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+
+  transform: translate(-50%, -50%);
+
+  background: #ffd800;
+
+  /* Pixelated Pac-Man shape */
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    75% 8%,
+    92% 8%,
+    92% 25%,
+    100% 25%,
+    100% 75%,
+    92% 75%,
+    92% 92%,
+    75% 92%,
+    75% 100%,
+    25% 100%,
+    25% 92%,
+    8% 92%,
+    8% 75%,
+    0% 75%,
+    0% 25%,
+    8% 25%,
+    8% 8%,
+    25% 8%
+  );
+
+  z-index: 10;
+
+  image-rendering: pixelated;
+
+  animation:
+    pacman-mouth 0.18s steps(1) infinite,
+    pacman-bob 0.3s steps(2) infinite;
 }
 
-@keyframes pixelCursorBounce {
+/* @keyframes pixelCursorBounce {
   from { transform: translate(-50%, -55%) rotate(45deg); }
   to { transform: translate(-50%, -45%) rotate(45deg); }
+} */
+
+/* @keyframes pacman-mouth {
+  0% {
+    clip-path: polygon(
+      25% 0%,
+      75% 0%,
+      75% 8%,
+      92% 8%,
+      92% 25%,
+      100% 25%,
+      100% 75%,
+      92% 75%,
+      92% 92%,
+      75% 92%,
+      75% 100%,
+      25% 100%,
+      25% 92%,
+      8% 92%,
+      8% 75%,
+      0% 75%,
+      0% 25%,
+      8% 25%,
+      8% 8%,
+      25% 8%
+    );
+  }
+
+  50% {
+    clip-path: polygon(
+      25% 0%,
+      75% 0%,
+      75% 8%,
+      92% 8%,
+      92% 25%,
+      55% 45%,
+      92% 75%,
+      92% 92%,
+      75% 92%,
+      75% 100%,
+      25% 100%,
+      25% 92%,
+      8% 92%,
+      8% 75%,
+      45% 55%,
+      8% 25%,
+      8% 8%,
+      25% 8%
+    );
+  }
+}
+
+@keyframes pacman-bob {
+  0% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: 1px;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+} */
+
+@keyframes pacman-mouth {
+  0% {
+    clip-path: polygon(
+      25% 0%,
+      75% 0%,
+      75% 8%,
+      92% 8%,
+      92% 25%,
+      100% 25%,
+      100% 75%,
+      92% 75%,
+      92% 92%,
+      75% 92%,
+      75% 100%,
+      25% 100%,
+      25% 92%,
+      8% 92%,
+      8% 75%,
+      0% 75%,
+      0% 25%,
+      8% 25%,
+      8% 8%,
+      25% 8%
+    );
+  }
+
+  50% {
+    clip-path: polygon(
+      25% 0%,
+      75% 0%,
+      75% 8%,
+      92% 8%,
+      92% 25%,
+
+      /* upper jaw → mouth tip */
+      55% 50%,
+
+      /* mouth tip → lower jaw */
+      92% 75%,
+
+      92% 92%,
+      75% 92%,
+      75% 100%,
+      25% 100%,
+      25% 92%,
+      8% 92%,
+      8% 75%,
+      0% 75%,
+      0% 25%,
+      8% 25%,
+      8% 8%,
+      25% 8%
+    );
+  }
 }
 
 
@@ -766,7 +929,9 @@ button { cursor: pointer; }
   text-overflow: ellipsis;
   font-size: 18px;
   color: #fff;
-  letter-spacing: .2px;
+  letter-spacing: .3px;
+  font-family: "Press Start 2P", monospace;
+  margin-bottom: 8px;
 }
 
 .player-cell small {
@@ -774,6 +939,7 @@ button { cursor: pointer; }
   font-size: 13px;
   font-weight: 800;
   letter-spacing: .3px;
+  font-family: "Press Start 2P", monospace;
 }
 
 
@@ -851,20 +1017,20 @@ button { cursor: pointer; }
 .top-1 .score { color: var(--tier-gold); text-shadow: 0 0 12px rgba(255, 208, 43, .6), 2px 2px 0 rgba(0, 0, 0, .3); }
 
 /* small crown mark for rank 1, pure decoration, no markup needed */
-.leader-row.top-1 .rank-number::before {
+/* .leader-row.top-1 .rank-number::before {
   content: "♛";
   position: absolute;
   top: -14px;
   font-size: 13px;
   color: var(--tier-gold);
   text-shadow: 0 0 6px rgba(255, 208, 43, .8);
-}
+} */
 
 
 /* =========================================================
    19. DECORATIONS
    ========================================================= */
-
+/* 
 .stone-corner {
   position: absolute;
   width: 80px;
@@ -876,7 +1042,7 @@ button { cursor: pointer; }
 }
 
 .stone-corner.top-left { left: -37px; top: 5px; transform: rotate(-26deg); }
-.stone-corner.top-right { right: -35px; top: 4px; transform: rotate(25deg); }
+.stone-corner.top-right { right: -35px; top: 4px; transform: rotate(25deg); } */
 
 .fx-layer { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
 

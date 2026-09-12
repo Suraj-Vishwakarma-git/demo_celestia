@@ -15,7 +15,7 @@ export default function TeamSearch({ value, setValue, onSearch }) {
         placeholder="Search team..."
         aria-label="Search team"
       />
-      <button type="submit"><Search size={21} /> Search</button>
+      {/* <button type="submit"><Search size={21} /> Search</button> */}
     </form>
   );
 }

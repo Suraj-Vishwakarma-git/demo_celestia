@@ -1,10 +1,10 @@
-import { Crown, Medal } from "lucide-react";
+import { Crown } from "lucide-react";
 
 export default function LeaderboardRow({ player }) {
   const top = player.rank <= 3;
 
   const Icon = top
-    ? [Crown, Medal, Medal][player.rank - 1]
+    ? [Crown, Crown, Crown][player.rank - 1]
     : null;
 
   return (
